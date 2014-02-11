@@ -1,0 +1,187 @@
+// Write your styles here.
+// SASS will be compiled to CSS. DONE
+// Vendor prefixes will automatically be added. DONE
+// CSS will be minified. DONE
+// Multiple CSS files will be combined.
+
+//
+// COLORS
+//
+
+$gray: #aaa;
+$blue: #7bbeca;
+$green: #beca7b;
+$red: #ca7bbe;
+
+$bootstrap-red: #d9534f;
+$bootstrap-green: #5cb85c;
+$bootstrap-yellow: #f0ad4e;
+
+//
+// SIZES
+//
+
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+//
+// MIXINS
+//
+
+@mixin colorize ($color: $gray) {
+    color: darken($color, 15%);
+    background: lighten($color, 30%);
+    border-left: 4px solid lighten($color, 15%);
+}
+
+@mixin colorizeplus ($color: $gray) {
+    color: darken($color, 15%);
+    background: lighten($color, 30%);
+}
+
+@mixin columns ($total: 1) {
+    flex-basis: (100% / $total);
+    width: (100% / $total);
+}
+
+@mixin columnsplus ($total: 1) {
+    flex-basis: (100% / $total) - 1%;
+    width: (100% / $total) - 1%;
+}
+
+@mixin absolute ($top: 0, $right: 0, $bottom: 0, $left: 0) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+//
+// BASE
+//
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic);
+
+.header-wrap {
+    line-height: 13px;
+}
+
+h1 {
+    color: $gray;
+    font-size: 2.4rem;
+}
+
+h2 {
+    color: $gray;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+h3 {
+    color: darken($gray, 30%);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+// FIXME: Don't use ids.
+#content ul li {
+    background: none;
+    list-style: square inside;
+}
+
+// FIXME: Don't use ids.
+#content ul li,
+#content ol li {
+    margin-bottom: 1rem;
+}
+
+.media {
+    @include colorize;
+    border-left: none;
+    height: 6rem;
+    margin: 0;
+    padding: .5rem;
+}
+
+.media-title {
+    font-weight: bold;
+}
+
+.main-heading {
+    line-height: 2.8rem;
+}
+
+.square {
+    display: inline-block;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    font-size: 3.2rem;
+    margin-bottom: 0;
+    padding: 2rem;
+    width: 18rem;
+    height: 18rem;
+}
+
+.square:hover {
+    @include colorizeplus(darken($gray, 5%));
+    text-decoration: none;
+}
+
+.subfooter p {
+    margin-bottom: 0;
+}
+
+.haiku *:not([class^="icon-"]):not([class*=" icon-"]) {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    font-size: 3.2rem;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+//
+// FLEX
+//
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-item {
+    @include columns();
+}
+
+//
+// STATES
+//
+
+.blue {
+    @include colorize($blue);
+}
+
+.bluer {
+    @include colorize(darken($blue, 10%));
+}
+
+.red {
+    @include colorize($red);
+}
+
+.redder {
+    @include colorize(darken($red, 10%));
+}
+
+.green {
+    @include colorize($green);
+}
+
+.white,
+.white:hover {
+    @include colorize(white);
+    cursor: default;
+}
