@@ -12,6 +12,7 @@ $gray: #aaa;
 $blue: #7bbeca;
 $green: #beca7b;
 $red: #ca7bbe;
+$yellow: #aaa;
 
 $bootstrap-red: #d9534f;
 $bootstrap-green: #5cb85c;
@@ -63,15 +64,18 @@ $screen-lg: 1200px;
 // BASE
 //
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic);
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700);
 
-.header-wrap {
-    line-height: 13px;
+body {
+    font-size: 16px;
+    background: darken($gray, 50%);
 }
 
 h1 {
-    color: $gray;
-    font-size: 2.4rem;
+    color: white;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 8rem;
+    text-align: center;
 }
 
 h2 {
@@ -84,62 +88,6 @@ h3 {
     color: darken($gray, 30%);
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-// FIXME: Don't use ids.
-#content ul li {
-    background: none;
-    list-style: square inside;
-}
-
-// FIXME: Don't use ids.
-#content ul li,
-#content ol li {
-    margin-bottom: 1rem;
-}
-
-.media {
-    @include colorize;
-    border-left: none;
-    height: 6rem;
-    margin: 0;
-    padding: .5rem;
-}
-
-.media-title {
-    font-weight: bold;
-}
-
-.main-heading {
-    line-height: 2.8rem;
-}
-
-.square {
-    display: inline-block;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 300;
-    font-size: 3.2rem;
-    margin-bottom: 0;
-    padding: 2rem;
-    width: 18rem;
-    height: 18rem;
-}
-
-.square:hover {
-    @include colorizeplus(darken($gray, 5%));
-    text-decoration: none;
-}
-
-.subfooter p {
-    margin-bottom: 0;
-}
-
-.haiku *:not([class^="icon-"]):not([class*=" icon-"]) {
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 300;
-    font-size: 3.2rem;
-    font-style: italic;
-    margin-bottom: 0;
 }
 
 //
@@ -157,31 +105,43 @@ h3 {
 }
 
 //
-// STATES
+// COLORS
 //
 
-.blue {
-    @include colorize($blue);
+.colors {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.bluer {
-    @include colorize(darken($blue, 10%));
+.color {
+    background: #aaa;
+    width: 14rem;
+    height: 14rem;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
 }
 
-.red {
-    @include colorize($red);
+.color:nth-of-type(1) {
+    background: $red;
 }
 
-.redder {
-    @include colorize(darken($red, 10%));
+.color:nth-of-type(2) {
+    background: $yellow;
 }
 
-.green {
-    @include colorize($green);
+.color:nth-of-type(3) {
+    background: $green;
 }
 
-.white,
-.white:hover {
-    @include colorize(white);
-    cursor: default;
+.color:nth-of-type(4) {
+    background: $blue;
+}
+
+.color:nth-of-type(5) {
+    background: $gray;
+}
+
+.color:nth-of-type(6) {
+    background: white;
 }
