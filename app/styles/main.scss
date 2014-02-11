@@ -8,11 +8,11 @@
 // COLORS
 //
 
+$red: #b21d19;
+$yellow: #ebc918;
+$green: #6da900;
+$blue: #2e549e;
 $gray: #aaa;
-$blue: #7bbeca;
-$green: #beca7b;
-$red: #ca7bbe;
-$yellow: #aaa;
 
 $bootstrap-red: #d9534f;
 $bootstrap-green: #5cb85c;
@@ -75,7 +75,8 @@ h1 {
     color: white;
     font-family: 'Amatic SC', sans-serif;
     font-size: 8rem;
-    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 h2 {
@@ -105,8 +106,25 @@ h3 {
 }
 
 //
+// HERO
+//
+
+.hero {
+    text-align: center;
+    margin: 8rem;
+}
+
+.subtitle {
+    color: white;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 2rem;
+}
+
+//
 // COLORS
 //
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 .colors {
     display: flex;
@@ -116,32 +134,66 @@ h3 {
 
 .color {
     background: #aaa;
+    color: white;
     width: 14rem;
     height: 14rem;
     border-bottom-left-radius: .3rem;
     border-bottom-right-radius: .3rem;
+    position: relative;
+}
+
+.color::before {
+    font-family: 'Source Sans Pro', sans-serif;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
 }
 
 .color:nth-of-type(1) {
     background: $red;
 }
 
+.color:nth-of-type(1)::before {
+    content: '#{$red}';
+}
+
 .color:nth-of-type(2) {
     background: $yellow;
+}
+
+.color:nth-of-type(2)::before {
+    content: '#{$yellow}';
 }
 
 .color:nth-of-type(3) {
     background: $green;
 }
 
+.color:nth-of-type(3)::before {
+    content: '#{$green}';
+}
+
 .color:nth-of-type(4) {
     background: $blue;
+}
+
+.color:nth-of-type(4)::before {
+    content: '#{$blue}';
 }
 
 .color:nth-of-type(5) {
     background: $gray;
 }
 
+.color:nth-of-type(5)::before {
+    content: '#{$gray}';
+}
+
 .color:nth-of-type(6) {
     background: white;
+}
+
+.color:nth-of-type(6)::before {
+    color: $gray;
+    content: '#ffffff';
 }
