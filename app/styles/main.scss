@@ -28,6 +28,26 @@ $screen-md: 992px;
 $screen-lg: 1200px;
 
 //
+// FONTS
+//
+
+@font-face {
+    font-family: "Amatic";
+    font-style: normal;
+    font-weight: normal;
+    src: asset-url("amatic-regular.woff?9309851", font) format("woff");
+}
+
+@font-face {
+    font-family: "Amatic";
+    font-style: normal;
+    font-weight: bold;
+    src: asset-url("amatic-bold.woff?9309851", font) format("woff");
+}
+
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+
+//
 // MIXINS
 //
 
@@ -64,31 +84,119 @@ $screen-lg: 1200px;
 // BASE
 //
 
-@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+html {
+    color: white;
+    font-family: "Amatic", 'Amatic SC', sans-serif;
+    font-size: 28px;
+    line-height: 2.4rem;
+}
 
 body {
-    font-size: 16px;
     background: darken($gray, 50%);
+    padding-bottom: 3rem;
+}
+
+main {
+    margin: 0 auto;
+    padding: 0 5vw;
+    max-width: 28.75rem;
 }
 
 h1 {
-    color: white;
-    font-family: 'Amatic SC', sans-serif;
-    font-size: 8rem;
+    font-size: 3rem;
+    line-height: 120%;
     margin: 0;
     padding: 0;
 }
 
+@media (min-width: 50em) {
+    h1 {
+        font-size: 4.6rem;
+    }
+}
+
+h1 a {
+    color: white;
+}
+
+h1 a:hover {
+    color: $gray;
+}
+
 h2 {
     color: $gray;
-    font-size: 1.6rem;
-    margin-top: 1rem;
+    font-size: 1.4rem;
+    margin: 0;
 }
 
 h3 {
     color: darken($gray, 30%);
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+ul {
+    margin: 0;
+}
+
+p {
+    margin: .8rem 0;
+}
+
+a, a:hover {
+    color: $gray;
+    text-decoration: none;
+}
+
+button {
+    background: white;
+    color: darken($gray, 50%);
+    border: none;
+    margin: .8rem 0;
+    border-radius: .1rem;
+}
+
+button:hover {
+    background: darken($gray, 50%);
+    color: white;
+    border: 1px solid white;
+}
+
+/*ul*/.blocklist {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: .8rem 0;
+    list-style: none;
+}
+
+/*li*/.blocklist-item {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid white;
+    border-radius: .1rem;
+    text-align: center; 
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .8rem;
+}
+
+/*li*/.blocklist-item a,
+a.blocklist-item {
+    color: white;
+}
+
+/*li*/.blocklist-item:hover {
+    background: white;
+    color: darken($gray, 50%);
+    cursor: pointer;
+}
+
+/*li*/.blocklist-item:hover a {
+    color: darken($gray, 50%);
 }
 
 //
@@ -111,20 +219,55 @@ h3 {
 
 .hero {
     text-align: center;
-    margin: 8rem;
+    margin: 3rem 0;
 }
 
 .subtitle {
     color: white;
     font-family: 'Amatic SC', sans-serif;
+    font-size: 1.2rem;
+}
+
+//
+// QUESTIONS
+//
+
+.question {
+    margin-bottom: 2rem;
+}
+
+.question--download {
+    text-align: center;
+}
+
+.flex--team {
+    display: block;
+}
+
+@media (min-width: 32em) {
+    .flex--team {
+        display: flex;
+    }
+}
+
+/*button*/.download {
     font-size: 2rem;
+    font-weight: bold;
+    padding: .6rem .8rem .8rem .8rem;
+}
+
+//
+// SKETCHES
+//
+
+.sketch {
+    margin: .8rem 0;
+    max-width: 100%;
 }
 
 //
 // COLORS
 //
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 .colors {
     display: flex;
@@ -135,65 +278,66 @@ h3 {
 .color {
     background: #aaa;
     color: white;
-    width: 14rem;
-    height: 14rem;
-    border-bottom-left-radius: .3rem;
-    border-bottom-right-radius: .3rem;
+    width: 16vw;
+    height: 16vw;
+    border-bottom-left-radius: .1rem;
+    border-bottom-right-radius: .1rem;
     position: relative;
 }
 
 .color::before {
-    font-family: 'Source Sans Pro', sans-serif;
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: .6rem;
+    left: .6rem;
 }
 
 .color:nth-of-type(1) {
     background: $red;
 }
 
-.color:nth-of-type(1)::before {
-    content: '#{$red}';
-}
-
 .color:nth-of-type(2) {
     background: $yellow;
-}
-
-.color:nth-of-type(2)::before {
-    content: '#{$yellow}';
 }
 
 .color:nth-of-type(3) {
     background: $green;
 }
 
-.color:nth-of-type(3)::before {
-    content: '#{$green}';
-}
-
 .color:nth-of-type(4) {
     background: $blue;
-}
-
-.color:nth-of-type(4)::before {
-    content: '#{$blue}';
 }
 
 .color:nth-of-type(5) {
     background: $gray;
 }
 
-.color:nth-of-type(5)::before {
-    content: '#{$gray}';
-}
-
 .color:nth-of-type(6) {
     background: white;
 }
 
-.color:nth-of-type(6)::before {
-    color: $gray;
-    content: '#ffffff';
+@media (min-width: 50em) {
+    .color:nth-of-type(1)::before {
+        content: '#{$red}';
+    }
+
+    .color:nth-of-type(2)::before {
+        content: '#{$yellow}';
+    }
+
+    .color:nth-of-type(3)::before {
+        content: '#{$green}';
+    }
+
+    .color:nth-of-type(4)::before {
+        content: '#{$blue}';
+    }
+
+    .color:nth-of-type(5)::before {
+        content: '#{$gray}';
+    }
+
+    .color:nth-of-type(6)::before {
+        color: $gray;
+        content: '#ffffff';
+    }
 }
