@@ -8,16 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-    var appname = 'foodfight',
-        ltld = require('local-tld-lib'),
-        port = ltld.getPort(appname),
-        fs = require('fs');
-    
-    ltld.add(appname, port);
-    var powfile = process.env.HOME + '/.pow/' + appname;
-    fs.writeFileSync(powfile + '.tmp', port);
-    fs.renameSync(powfile + '.tmp', powfile);
-    
+  
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -26,15 +17,15 @@ module.exports = function (grunt) {
 
     // Define the configuration for all the tasks
     grunt.initConfig({
-
         // Project settings
         yeoman: {
             // Configurable paths
             app: 'app',
             dist: 'dist',
-            port: port
+            appname: 'foodfight',
+            port: require('local-tld-lib').getPort('<%= yeoman.appname %>')
         },
-
+        
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             js: {
@@ -111,7 +102,7 @@ module.exports = function (grunt) {
         open: {
             all: {
                 // Gets the port from the connect configuration
-                path: 'http://' + appname + '.dev'
+                path: 'http://<%= yeoman.appname %>.dev'
             }
         },
         
@@ -403,6 +394,13 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
+      
+    grunt.registerTask('domain', function () {
+//        require('local-tld-lib').add(grunt.config.get('yeoman.appname'), grunt.config.get('yeoman.port'));
+        var powfile = process.env.HOME + '/.pow/' + grunt.config.get('yeoman.appname');
+        require('fs').writeFileSync(powfile + '.tmp', grunt.config.get('yeoman.port'));
+        require('fs').renameSync(powfile + '.tmp', powfile);
+    });
 
     grunt.registerTask('default', [
         'newer:jshint',
