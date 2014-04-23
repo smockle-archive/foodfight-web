@@ -252,8 +252,22 @@ a.blocklist-item {
 
 /*button*/.download {
     font-size: 2rem;
+    line-height: 2rem;
     font-weight: bold;
     padding: .6rem .8rem .8rem .8rem;
+    background: white;
+    color: darken($gray, 50%);
+    margin: .8rem 0;
+    border-radius: .1rem;
+    border: 1px solid darken($gray, 50%);
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/*button*/.download:hover {
+    background: darken($gray, 50%);
+    color: white;
+    border: 1px solid white;
 }
 
 //
